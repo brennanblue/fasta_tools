@@ -4,10 +4,10 @@
 
 import sys
 
-a_count = 0
-c_count = 0
-g_count = 0
-t_count = 0
+a_count = float(0)
+c_count = float(0)
+g_count = float(0)
+t_count = float(0)
 
 with open(sys.argv[1], 'r') as fasta:
     for line in fasta:
@@ -23,9 +23,15 @@ with open(sys.argv[1], 'r') as fasta:
                 g_count += 1
             else:
                 t_count += 1
+total_count = a_count + c_count + g_count + t_count
+a_perc = (a_count / total_count) * 100
+c_perc = (c_count / total_count) * 100
+g_perc = (g_count / total_count) * 100
+t_perc = (t_count / total_count) * 100
 
 print("Base counts for file %s:" % sys.argv[1])
-print("A: %d" % a_count)
-print("C: %d" % c_count)
-print("G: %d" % g_count)
-print("T: %d" % t_count)
+print("Total Nucleotides: %d" % total_count)
+print("A: %d percentage: %d%%" % (a_count, a_perc))
+print("C: %d percentage: %d%%" % (c_count, c_perc))
+print("G: %d Percentage: %d%%" % (g_count, g_perc))
+print("T: %d Percentage: %d%%" % (t_count, t_perc))
